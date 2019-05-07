@@ -46,7 +46,7 @@ class Graph{
 				nodes[source] = new Node(source);
 			}
 			if(nodes.count(dest) == 0){
-				nodes[dest] = new Node(source);
+				nodes[dest] = new Node(dest);
 			}
 			nodes[source]->addNeighbor(nodes[dest], weight);
 		}
@@ -54,6 +54,7 @@ class Graph{
 		void dijkstra(int node){
 			priority_queue < pair <int, Node*> > pq;
 			pq.push({0, nodes[node]});
+			nodes[node]->setDist(0);
 			while(!pq.empty()){
 				Node* currentNode = pq.top().second;
 				int distance = -pq.top().first;
@@ -71,4 +72,4 @@ class Graph{
 
 			return;
 		}
-}
+};
